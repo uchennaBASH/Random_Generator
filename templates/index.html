@@ -1,0 +1,44 @@
+{% load static %} <!--this is important so that html can read your static file. We are doing this so html can recognize the css file. (refer to settings.py file) -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Generator</title>
+    <meta name="description" content="description"/>
+    <meta name="author" content="author" />
+    <meta name="keywords" content="keywords" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css" />
+  </head>
+  <body>
+    <form method= 'POST'>{% csrf_token %}
+      <input type='text' placeholder='Enter a word' name='photo'>
+      <button type='submit'>Enter</button>
+    </form>
+    <img src='https://source.unsplash.com/1600x900/?{{ photo }}' alt='image'>
+
+    <div class='container'>
+      <!--
+      <div class='title'>
+        <h1>Random Generator</h1>
+      </div>
+      -->
+      
+      <div class='random'>
+        <h4>Fact</h4>
+        <p>{{ fact }}</p>
+      </div>
+  
+      <div class='random'>
+        <h4>Bored?</h4>
+        <p>{{ activity }}</p>
+      </div>
+  
+      <div class='random'>
+        <h4>Dog</h4>
+        <img src='{{ dog }}'>
+      </div>
+    </div>
+    
+  </body>
+</html>
